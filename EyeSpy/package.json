@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "EyeSpy",
+  "private": true,
+  "devDependencies": {
+    "tslint": "^4.2.0",
+    "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "@types/chrome": "0.0.38"
+  }
+}
