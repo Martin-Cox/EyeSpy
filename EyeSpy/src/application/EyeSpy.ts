@@ -1,2 +1,3 @@
-﻿require('./Background');
-require('./EyeSpyController');
+﻿export const testString = "A test string";
+
+require("./EyeSpyController");
