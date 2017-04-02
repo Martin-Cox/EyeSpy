@@ -250,3 +250,10 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Vendor
+/EyeSpy/vendor
+
+# Javascript and Source Maps
+/EyeSpy/src/**/*.js
+/EyeSpy/src/**/*.map
