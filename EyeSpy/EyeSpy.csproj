@@ -39,7 +39,6 @@
     <Content Include="package.json" />
     <Content Include="manifest.json" />
     <Content Include="tslint.json" />
-    <Content Include=".travis.yml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
