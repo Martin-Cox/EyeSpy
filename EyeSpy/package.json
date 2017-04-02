@@ -12,6 +12,7 @@
     "jquery": "^3.1.1"
   },
   "scripts": {
-    "lint": "tslint -c tslint.json src/**/*.ts"
+	"lint": "tslint -c tslint.json src/**/*.ts",
+	"test": "npm run lint"
   }
 }
