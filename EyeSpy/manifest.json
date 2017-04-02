@@ -14,7 +14,7 @@
 	"content_scripts": [
 		{
 			"all_frames": false,
-			"js": ["src/application/EyeSpy.js"],
+			"js": ["build/EyeSpy.js"],
 			"matches": ["<all_urls>"],
 			"run_at": "document_idle"
 		}

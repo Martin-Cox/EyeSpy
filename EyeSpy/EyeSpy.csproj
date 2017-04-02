@@ -28,10 +28,12 @@
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\application\Background.ts" />
     <TypeScriptCompile Include="src\application\EyeSpy.ts" />
+    <TypeScriptCompile Include="src\application\EyeSpyController.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />

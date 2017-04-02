@@ -7,3 +7,5 @@ chrome.tabs.onUpdated.addListener((tabId: number, changeInfo: chrome.tabs.TabCha
 		chrome.tabs.sendMessage(tabId, { action: "tabLoaded", url: tab.url});
 	}
 });
+
+export const testString = "A test string";

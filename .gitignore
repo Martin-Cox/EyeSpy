@@ -258,6 +258,9 @@ paket-files/
 /EyeSpy/src/**/*.js
 /EyeSpy/src/**/*.map
 
+# Build files
+/EyeSpy/build/*
+
 # VS config files
 /EyeSpy/web.config
 /EyeSpy/web.Debug.config
