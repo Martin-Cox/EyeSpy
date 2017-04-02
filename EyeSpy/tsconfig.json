@@ -1,17 +1,25 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
 		"noImplicitAny": false,
 		"noEmitOnError": true,
 		"removeComments": false,
 		"sourceMap": true,
-		"target": "es5"
+		"target": "ES5",
+		"module": "amd",
+		"moduleResolution": "node",
+		"declaration": false,
+		"paths": {
+			"*": [ "src/*" ]
+		}
 	},
 	"compileOnSave": true,
 	"exclude": [
 		"node_modules",
-		"wwwroot"
+		"venddor"
 	],
 	"types": [
-		"chrome"
+		"chrome",
+		"node"
 	]
-}
+} 
