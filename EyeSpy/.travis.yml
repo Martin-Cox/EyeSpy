@@ -6,6 +6,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
 install:
   - npm install
+script: npm run test
   # Disable email notifications
 notifications:  
   email: false
