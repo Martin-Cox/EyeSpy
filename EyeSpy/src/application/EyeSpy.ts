@@ -1,6 +1,4 @@
-﻿/**
- * Responds to "tabLoaded" events triggered by the Background script.
- */
+﻿/** Responds to "tabLoaded" events triggered by the Background script. */
 chrome.runtime.onMessage.addListener((message: any, sender: chrome.runtime.MessageSender, sendResponse: any) =>
 {
 	if (message.action === "tabLoaded")
