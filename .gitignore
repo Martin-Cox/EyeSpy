@@ -257,3 +257,8 @@ paket-files/
 # Javascript and Source Maps
 /EyeSpy/src/**/*.js
 /EyeSpy/src/**/*.map
+
+# VS config files
+/EyeSpy/web.config
+/EyeSpy/web.Debug.config
+/EyeSpy/web.Release.config
