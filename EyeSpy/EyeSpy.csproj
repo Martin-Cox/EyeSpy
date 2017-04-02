@@ -24,7 +24,6 @@
   <ItemGroup>
     <Content Include="Credits.txt" />
     <Content Include="src\resources\EyeSpy.html" />
-    <Content Include="src\require.config.js" />
     <Content Include="src\resources\icon.png" />
     <Content Include="web.config">
       <SubType>Designer</SubType>

@@ -10,4 +10,4 @@ script:
   - npm run test
   # Disable email notifications
 notifications:  
-  email: false
+email: false
