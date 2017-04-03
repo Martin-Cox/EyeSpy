@@ -3,7 +3,7 @@ chrome.tabs.onUpdated.addListener((tabId: number, changeInfo: chrome.tabs.TabCha
 {
 	if (changeInfo.status === "complete")
 	{
-		// Notify EyeSpy that a tab has loaded.
+		// Notify the EyeSpyController that a tab has loaded.
 		chrome.tabs.sendMessage(tabId, { action: "tabLoaded", url: tab.url });
 	}
 });

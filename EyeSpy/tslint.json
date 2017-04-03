@@ -8,7 +8,8 @@
 		"indent": [ true, "tabs" ],
 		"one-line": [ false ],
 		"no-console": [ false ],
-		"align": [ true, "parameters" ]
+		"align": [ true, "parameters" ],
+		"variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
 	},
 	"rulesDirectory": []
 }

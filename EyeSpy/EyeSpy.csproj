@@ -34,6 +34,7 @@
     <TypeScriptCompile Include="src\application\Background.ts" />
     <TypeScriptCompile Include="src\application\EyeSpy.ts" />
     <TypeScriptCompile Include="src\application\EyeSpyController.ts" />
+    <TypeScriptCompile Include="src\application\PageProcessor.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
