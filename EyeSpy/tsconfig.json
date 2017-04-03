@@ -16,7 +16,7 @@
 	"compileOnSave": true,
 	"exclude": [
 		"node_modules",
-		"venddor"
+		"vendor"
 	],
 	"types": [
 		"chrome",
