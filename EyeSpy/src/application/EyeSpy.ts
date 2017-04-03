@@ -1,3 +1,3 @@
 ﻿export const testString = "A test string";
 
-require("./EyeSpyController");
+import * as EyeSpyController from "./EyeSpyController";
