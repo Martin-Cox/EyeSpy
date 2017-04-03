@@ -3,9 +3,8 @@
 module.exports = {
 	context: path.resolve(__dirname, "./src"),
 	entry: "./application/EyeSpy",
-	devtool: "eval-cheap-source-map",
 	output: {
-		filename: "EyeSpy.js",
+		filename: "Build.js",
 		path: path.resolve(__dirname, "build")
 	},
 	resolve: {
@@ -14,17 +13,27 @@ module.exports = {
 		}
 	},
 	module: {
-		rules: [{
-			test: /\.js$/,
-			include: path.resolve(__dirname, "./src/*"),
-			use: [{
-				loader: 'babel-loader',
-				options: {
-					presets: [
-					  ['es2015', { modules: false }]
-					]
-				}
-			}]
-		}]
+		rules: [
+			{
+				test: /\.js$/,
+				include: path.resolve(__dirname, "./src/*"),
+				use: [{
+					loader: "babel-loader",
+					options: {
+						presets: [
+						  ["es2015", { modules: false }]
+						]
+					}
+				}]
+			}, {
+				enforce: "pre",
+				test: /\.ts(x)?$/,
+				include: path.resolve(__dirname, "./src/*"),
+				use: [{
+					loader: "source=map-loader"
+				}]
+			}
+		]
 	},
+	devtool: "inline-source-map"
 };

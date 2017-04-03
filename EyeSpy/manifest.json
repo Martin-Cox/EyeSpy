@@ -8,13 +8,13 @@
 		"default_title": "EyeSpy",
 		"default_popup": "src/resources/EyeSpy.html"
 	},
-	"icons": {
+	"icons": { 
 		"128":  "src/resources/icon.png"
 	},
 	"content_scripts": [
 		{
 			"all_frames": false,
-			"js": ["build/EyeSpy.js"],
+			"js": ["build/Build.js"],
 			"matches": ["<all_urls>"],
 			"run_at": "document_idle"
 		}

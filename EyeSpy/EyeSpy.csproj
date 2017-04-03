@@ -32,8 +32,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\application\Background.ts" />
-    <TypeScriptCompile Include="src\application\EyeSpy.ts" />
+    <TypeScriptCompile Include="src\application\Main.ts" />
     <TypeScriptCompile Include="src\application\EyeSpyController.ts" />
+    <TypeScriptCompile Include="src\application\EyeSpyPopup.ts" />
     <TypeScriptCompile Include="src\application\PageProcessor.ts" />
   </ItemGroup>
   <ItemGroup>
