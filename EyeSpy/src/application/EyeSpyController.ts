@@ -22,6 +22,10 @@ export class EyeSpyController
 			{
 				this._handleTabLoad(message.url);
 			}
+			else if (message.action === "scanPage")
+			{
+				this._pageProcessor.processPage();
+			}
 		});
 	}
 

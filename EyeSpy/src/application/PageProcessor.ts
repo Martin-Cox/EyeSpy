@@ -31,6 +31,7 @@ export class PageProcessor
 	 */
 	private _getPageImages(): void
 	{
+		console.log("Page scan results:");
 		console.log($("body").find("img"));
 	}
 }

@@ -30,7 +30,7 @@ module.exports = {
 				test: /\.ts(x)?$/,
 				include: path.resolve(__dirname, "./src/*"),
 				use: [{
-					loader: "source=map-loader"
+					loader: "source-map-loader"
 				}]
 			}
 		]
