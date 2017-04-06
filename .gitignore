@@ -265,3 +265,6 @@ paket-files/
 /EyeSpy/web.config
 /EyeSpy/web.Debug.config
 /EyeSpy/web.Release.config
+
+# Keys file
+/EyeSpy/src/application/Keys.ts
