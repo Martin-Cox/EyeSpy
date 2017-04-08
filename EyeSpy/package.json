@@ -21,6 +21,8 @@
   "scripts": {
     "lint": "tslint -c tslint.json src/**/*.ts",
     "test": "npm run lint",
-    "build": ".\\node_modules\\.bin\\webpack"
-  }
+    "build": ".\\node_modules\\.bin\\webpack",
+    "build:watch": ".\\node_modules\\.bin\\webpack --watch"
+  },
+  "-vs-binding":{"ProjectOpened":["build:watch"]}
 }

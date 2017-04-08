@@ -2,9 +2,12 @@
 
 module.exports = {
 	context: path.resolve(__dirname, "./src"),
-	entry: "./application/EyeSpy",
+	entry:  {
+		eyespy: "./application/EyeSpy",
+		background: "./application/background/Background"
+	},
 	output: {
-		filename: "Build.js",
+		filename: "[name].js",
 		path: path.resolve(__dirname, "build")
 	},
 	resolve: {

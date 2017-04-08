@@ -3,7 +3,7 @@
 import { CLIENT_ID, CLIENT_SECRET } from "./Keys";
 
 // TODO: Get Clarifai to be webpack compatible.
-const Clarifai = require("clarifai");
+const clarifai = require("clarifai");
 
 /**
  * The PageProcessor class. Handles logic for processing page DOM elements.
@@ -19,7 +19,7 @@ export class PageProcessor
 
 	public constructor()
 	{
-		this._clarifai = new Clarifai.App(CLIENT_ID, CLIENT_SECRET);
+		this._clarifai = new clarifai.App(CLIENT_ID, CLIENT_SECRET);
 	}
 
 	/**
@@ -52,7 +52,7 @@ export class PageProcessor
 
 		if (firstImageSource)
 		{
-			this._clarifai.models.predict(Clarifai.GENERAL_MODEL, firstImageSource).then(
+			this._clarifai.models.predict(clarifai.GENERAL_MODEL, firstImageSource).then(
 				(response: any) =>
 				{
 					const imageConcepts: any[] = response.outputs[0].data.concepts;

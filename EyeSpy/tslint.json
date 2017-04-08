@@ -9,7 +9,15 @@
 		"one-line": [ false ],
 		"no-console": [ false ],
 		"align": [ true, "parameters" ],
-		"variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
+		"variable-name": [ true, "ban-keywords", "check-format", "allow-leading-underscore" ],
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "never",
+				"singleline": "never"
+			}
+		],
+		"no-var-requires": false
 	},
 	"rulesDirectory": []
 }

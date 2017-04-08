@@ -31,7 +31,7 @@
     <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\application\Background.ts" />
+    <TypeScriptCompile Include="src\application\background\Background.ts" />
     <TypeScriptCompile Include="src\application\Keys.ts" />
     <TypeScriptCompile Include="src\application\Main.ts" />
     <TypeScriptCompile Include="src\application\EyeSpyController.ts" />
