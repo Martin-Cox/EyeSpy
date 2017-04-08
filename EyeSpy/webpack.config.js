@@ -3,7 +3,7 @@
 module.exports = {
 	context: path.resolve(__dirname, "./src"),
 	entry:  {
-		eyespy: "./application/EyeSpy",
+		eyespy: "./application/main/EyeSpy",
 		background: "./application/background/Background"
 	},
 	output: {

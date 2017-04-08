@@ -1,6 +1,6 @@
 ﻿import * as $ from "jquery";
 
-import { CLIENT_ID, CLIENT_SECRET } from "./Keys";
+import { CLIENT_ID, CLIENT_SECRET } from "../Keys";
 
 // TODO: Get Clarifai to be webpack compatible.
 const clarifai = require("clarifai");

@@ -1,4 +1,4 @@
-﻿import { PageProcessor } from "./PageProcessor";
+﻿import { PageProcessor } from "../tab/PageProcessor";
 
 /**
  * The EyeSpyController class. Contains logic for reacting to browser events.
@@ -37,6 +37,7 @@ export class EyeSpyController
 	{
 		console.log("A Tab has loaded: " + url);
 
-		this._pageProcessor.processPage();
+		// Disable for now to prevent lots of API requets being made during testing.
+		// this._pageProcessor.processPage();
 	}
 }

@@ -33,10 +33,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\application\background\Background.ts" />
     <TypeScriptCompile Include="src\application\Keys.ts" />
-    <TypeScriptCompile Include="src\application\Main.ts" />
-    <TypeScriptCompile Include="src\application\EyeSpyController.ts" />
-    <TypeScriptCompile Include="src\application\EyeSpyPopup.ts" />
-    <TypeScriptCompile Include="src\application\PageProcessor.ts" />
+    <TypeScriptCompile Include="src\application\main\Main.ts" />
+    <TypeScriptCompile Include="src\application\main\EyeSpyController.ts" />
+    <TypeScriptCompile Include="src\application\popup\EyeSpyPopup.ts" />
+    <TypeScriptCompile Include="src\application\tab\PageProcessor.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
