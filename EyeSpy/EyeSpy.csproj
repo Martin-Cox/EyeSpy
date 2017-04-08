@@ -23,8 +23,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Credits.txt" />
-    <Content Include="src\resources\EyeSpy.html" />
-    <Content Include="src\resources\icon.png" />
+    <Content Include="src\resources\EyeSpyPopup.html" />
+    <Content Include="src\resources\EyeSpyPopup.css" />
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>

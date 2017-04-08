@@ -6,7 +6,7 @@
 	"browser_action": {
 		"default_icon": "src/resources/images/eyespy-xlarge.png",
 		"default_title": "EyeSpy",
-		"default_popup": "src/resources/EyeSpy.html"
+		"default_popup": "src/resources/EyeSpyPopup.html"
 	},
 	"icons": {
 		"16": "src/resources/images/eyespy-xsmall.png",

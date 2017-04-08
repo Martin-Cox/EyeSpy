@@ -1,0 +1,55 @@
+﻿.eyespy-popup-content {
+	width: 600px;
+	height: 370px;
+	overflow-y: scroll;
+
+	display: flex;
+	flex-direction: row;
+	padding: 0;
+	margin: 0;
+}
+
+.eyespy-popup-content .menu {
+	height: 100%;
+	width: 100px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.eyespy-popup-content .menu .menu-item {
+	background-color: #719ECC;
+	width: 100%;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.eyespy-popup-content .menu-item :hover  {
+	background-color: #8DC6FF;
+}
+
+.eyespy-popup-content .menu .menu-item.menu-item-active {
+	background-color: #8DC6FF;
+}
+
+.eyespy-popup-content .menu .menu-item .menu-item-icon {
+	flex-grow: 0;
+	width: 80px;
+	padding: 10px;
+}
+
+.eyespy-popup-content .menu .menu-item .menu-item-caption {
+	width: 100%;
+	text-align: center;
+	color: #DAECFF;
+}
+
+.eyespy-popup-content .menu-item-content {
+	padding-left: 20px;
+	width: 100%;
+}
+
+.eyespy-popup-content .menu-item-content.menu-item-content-active {
+	background-color: #8DC6FF;
+}
