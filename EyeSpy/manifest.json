@@ -4,12 +4,14 @@
 	"manifest_version": 2,
 	"description":  "EyeSpy Extension",
 	"browser_action": {
-		"default_icon": "src/resources/icon.png",
+		"default_icon": "src/resources/images/eyespy-xlarge.png",
 		"default_title": "EyeSpy",
 		"default_popup": "src/resources/EyeSpy.html"
 	},
 	"icons": {
-		"128":  "src/resources/icon.png"
+		"16": "src/resources/images/eyespy-xsmall.png",
+		"48":  "src/resources/images/eyespy-medium.png",
+		"128": "src/resources/images/eyespy-xlarge.png"
 	},
 	"content_scripts": [
 		{
@@ -24,6 +26,7 @@
 	},
 	"permissions": [
 		"activeTab",
-		"tabs"
+		"tabs",
+		"contextMenus"
 	]
 }

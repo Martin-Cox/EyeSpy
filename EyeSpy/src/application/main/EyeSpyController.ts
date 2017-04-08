@@ -18,20 +18,26 @@ export class EyeSpyController
 		/** Responds to "tabLoaded" events triggered by the Background script. */
 		chrome.runtime.onMessage.addListener((message: any, sender: chrome.runtime.MessageSender, sendResponse: any) =>
 		{
-			if (message.action === "tabLoaded")
+			switch (message.action)
 			{
-				this._handleTabLoad(message.url);
-			}
-			else if (message.action === "scanPage")
-			{
-				this._pageProcessor.processPage();
+				case "tabLoaded":
+					this._handleTabLoad(message.url);
+					break;
+				case "scanPage":
+					this._pageProcessor.analysePage();
+					break;
+				case "analyseImage":
+					this._pageProcessor.analyseImage(message.url);
+					break;
+				default:
+					throw new Error("Unknown message action");
 			}
 		});
 	}
 
 	/**
 	 * Handles tabLoad events by beginning the page processor.
-	 * @param {string} url The tab url.
+	 * @param url The tab url.
 	 */
 	private _handleTabLoad(url: string): void
 	{

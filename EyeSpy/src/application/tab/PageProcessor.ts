@@ -13,7 +13,6 @@ export class PageProcessor
 	/** The jQuery image elements on the page. */
 	private _imageElements: JQuery;
 
-	// TODO: When Clarifai is webpack compatible, the clarifai instance should be moved to EyeSpyController.
 	/** The Clarifai app instance. */
 	private _clarifai: any;
 
@@ -23,17 +22,29 @@ export class PageProcessor
 	}
 
 	/**
-	 * Processes a page.
+	 * Analyses a page.
 	 */
-	public processPage(): void
+	public analysePage(): void
 	{
 		this._getPageImages();
 	}
 
 	/**
+	 * Analyses a single image.
+	 * @param image The image source or JQuery element to analyse.
+	 */
+	public analyseImage(image: string | JQuery): void
+	{
+		// Get the url of the image.
+		const url = (typeof (image) === "string") ? image : image.attr("src");
+
+		this._predictImage(url);
+	}
+
+	/**
 	 * Replaces a given image element with a new one.
-	 * @param {type} imageElement The JQuery image element to replace.
-	 * @param {type} replacementImage The JQuery image element to replace the existing one with.
+	 * @param imageElement The JQuery image element to replace.
+	 * @param replacementImage The JQuery image element to replace the existing one with.
 	 */
 	public replaceImage(imageElement: JQuery, replacementImage: JQuery): void
 	{
@@ -52,22 +63,31 @@ export class PageProcessor
 
 		if (firstImageSource)
 		{
-			this._clarifai.models.predict(clarifai.GENERAL_MODEL, firstImageSource).then(
-				(response: any) =>
-				{
-					const imageConcepts: any[] = response.outputs[0].data.concepts;
-
-					imageConcepts.forEach((concept: any) =>
-					{
-						console.log("Name: " + concept.name);
-						console.log("Probability: " + concept.value * 100 + "%");
-					});
-				},
-				(error: any) =>
-				{
-					console.error(error);
-				}
-			);
+			this._predictImage(firstImageSource);
 		}
+	}
+
+	/*
+	 * Predicts the contents of a single image.
+	 * @param url The source of the image to predict.
+	 */
+	private _predictImage(url: string): void
+	{
+		this._clarifai.models.predict(clarifai.GENERAL_MODEL, url).then(
+			(response: any) =>
+			{
+				const imageConcepts: any[] = response.outputs[0].data.concepts;
+
+				imageConcepts.forEach((concept: any) =>
+				{
+					console.log("Name: " + concept.name);
+					console.log("Probability: " + concept.value * 100 + "%");
+				});
+			},
+			(error: any) =>
+			{
+				console.error(error);
+			}
+		);
 	}
 }

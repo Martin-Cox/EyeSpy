@@ -7,3 +7,23 @@ chrome.tabs.onUpdated.addListener((tabId: number, changeInfo: chrome.tabs.TabCha
 		chrome.tabs.sendMessage(tabId, { action: "tabLoaded", url: tab.url });
 	}
 });
+
+/**
+ * Handler for clicking on the Analyse Image context item.
+ */
+const analyseImageHandler = (): any =>
+{
+	return (info: chrome.contextMenus.OnClickData, tab: chrome.tabs.Tab): void =>
+	{
+		// Notify the EyeSpyController that a tab has loaded.
+		chrome.tabs.sendMessage(tab.id, { action: "analyseImage", url: info.srcUrl });
+	};
+};
+
+/** Add the EyeSpy context menu item. */
+chrome.contextMenus.create({
+	contexts: ["image"],
+	id: "EyeSpy:AnalyseImage",
+	onclick: analyseImageHandler(),
+	title: "Analyse Image"
+});
