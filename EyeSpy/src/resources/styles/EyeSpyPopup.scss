@@ -1,6 +1,8 @@
-﻿.eyespy-popup-content {
-	width: 600px;
-	height: 370px;
+﻿@import "variables";
+
+.eyespy-popup-content {
+	width: 500px;
+	height: 300px;
 	overflow-y: auto;
 
 	display: flex;
@@ -11,37 +13,39 @@
 	/* Popup menu styling. */
 	.menu {
 		height: 100%;
-		width: 100px;
+		width: 80px;
 
 		display: flex;
 		flex-direction: column;
 
 		.menu-item {
-			background-color: #719ECC;
+			background-color: $eyespy-colour-paper;
 			width: 100%;
 			flex-grow: 1;
 			display: flex;
 			flex-direction: column;
+			font-family: $eyespy-font-primary;
+			font-size: $eyespy-font-size-large;
 
 			&:hover {
-				background-color: #8DC6FF;
+				background-color: $eyespy-colour-silk;
 			}
 
 			/* The menu item corresponding to the content that is being shown. */
 			&.active {
-				background-color: #8DC6FF;
+				background-color: $eyespy-colour-silk;
 			}
 
 			.menu-item-icon {
 				flex-grow: 0;
-				width: 80px;
+				width: 60px;
 				padding: 10px;
 			}
 
 			.menu-item-caption {
 				width: 100%;
 				text-align: center;
-				color: #DAECFF;
+				color: $eyespy-colour-charcoal;
 			}
 		}
 	}
@@ -50,7 +54,15 @@
 	.panel-content {
 		padding-left: 20px;
 		width: 100%;
-		background-color: #8DC6FF;
+		background-color: $eyespy-colour-silk;
+
+		.panel-content-header {
+			width: 100%;
+			text-align: center;
+			font-size: $eyespy-font-size-xlarge;
+			font-family: $eyespy-font-primary;
+			color: $eyespy-colour-charcoal;
+		}
 	}
 }
 

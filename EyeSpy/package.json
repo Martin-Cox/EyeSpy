@@ -23,9 +23,9 @@
     "lint": "tslint -c tslint.json src/**/*.ts",
     "test": "npm run lint",
     "build": ".\\node_modules\\.bin\\webpack",
-	"build:watch": ".\\node_modules\\.bin\\webpack --watch",
-	"build:css": ".\\node_modules\\.bin\\node-sass .\\src\\resources\\styles -o .\\build\\styles",
-	"build:css:watch": ".\\node_modules\\.bin\\node-sass -w .\\src\\resources\\styles -o .\\build\\styles"
+    "build:watch": ".\\node_modules\\.bin\\webpack --watch",
+    "build:css": ".\\node_modules\\.bin\\node-sass .\\src\\resources\\styles -o .\\build\\styles",
+    "build:css:watch": ".\\node_modules\\.bin\\node-sass -w .\\src\\resources\\styles -o .\\build\\styles"
   },
   "-vs-binding": {
     "ProjectOpened": [
