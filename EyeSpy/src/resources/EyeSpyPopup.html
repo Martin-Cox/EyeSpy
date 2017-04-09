@@ -3,12 +3,12 @@
 <head>
     <title></title>
 	<meta charset="utf-8" />
-	<link href="EyeSpyPopup.css" rel="stylesheet" />
+	<link href="../../build/styles/EyeSpyPopup.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="eyespy-popup-content">
 		<div class="menu">
-			<div class="menu-item menu-item-active">
+			<div class="menu-item active">
 				<img class="menu-item-icon" src="../resources/images/server.png">
 				<span class="menu-item-caption">HOME</span>
 			</div>
@@ -22,11 +22,17 @@
 			</div>
 		</div>
 
-		<div class="menu-item-content home menu-item-content-active">
+		<div class="panel-content home">
 			<h1>EyeSpy</h1>
 			<div>
 				<button id="scan-page-button" type="button">Scan Page</button>
 			</div>
+		</div>
+		<div class="panel-content rules hidden">
+			<h1>Rules</h1>
+		</div>
+		<div class="panel-content settings hidden">
+			<h1>Settings</h1>
 		</div>
 	</div>
 	<script type="text/javascript" src="../application/popup/EyeSpyPopup.js"></script>

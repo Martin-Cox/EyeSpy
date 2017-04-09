@@ -7,6 +7,7 @@
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
+    "node-sass": "^4.5.2",
     "source-map-loader": "^0.2.1",
     "tslint": "^5.0.0",
     "typescript": "^2.2.2",
@@ -22,7 +23,13 @@
     "lint": "tslint -c tslint.json src/**/*.ts",
     "test": "npm run lint",
     "build": ".\\node_modules\\.bin\\webpack",
-    "build:watch": ".\\node_modules\\.bin\\webpack --watch"
+	"build:watch": ".\\node_modules\\.bin\\webpack --watch",
+	"build:css": ".\\node_modules\\.bin\\node-sass .\\src\\resources\\styles -o .\\build\\styles",
+	"build:css:watch": ".\\node_modules\\.bin\\node-sass -w .\\src\\resources\\styles -o .\\build\\styles"
   },
-  "-vs-binding":{"ProjectOpened":["build:watch"]}
+  "-vs-binding": {
+    "ProjectOpened": [
+      "build:watch"
+    ]
+  }
 }
