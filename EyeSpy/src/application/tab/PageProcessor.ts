@@ -141,7 +141,7 @@ export class PageProcessor
 		// TODO: Shouldn't be defining the popup styles here :/
 		conceptsWrapper.css({
 			left: belowImageX, top: belowImageY, position: "absolute", backgroundColor: "#F4F4F4", width: image.width(),
-			textAlign: "center", fontSize: "1.275em"
+			textAlign: "center", fontSize: "1.275em", color: "black"
 		}).fadeIn(1000);
 
 		console.log(conceptsWrapper);
