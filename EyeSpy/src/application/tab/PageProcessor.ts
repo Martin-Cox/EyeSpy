@@ -125,8 +125,6 @@ export class PageProcessor
 		const topConcepts     = concepts.slice(0, 5);
 		const conceptsWrapper = $("<div class=\"eyespy-image-concepts-wrapper\">Image Contents:</div>");
 
-		image.replaceWith(conceptsWrapper);
-
 		topConcepts.forEach((concept: any) =>
 		{
 			const conceptElement = $("<div class=\"eyespy-image-concept\"><p>" + concept.name
@@ -134,6 +132,19 @@ export class PageProcessor
 
 			conceptsWrapper.append(conceptElement);
 		});
+
+		const belowImageX = image.offset().left;
+		const belowImageY = image.offset().top + image.innerHeight();
+
+		$("body").append(conceptsWrapper);
+
+		// TODO: Shouldn't be defining the popup styles here :/
+		conceptsWrapper.css({
+			left: belowImageX, top: belowImageY, position: "absolute", backgroundColor: "#F4F4F4", width: image.width(),
+			textAlign: "center", fontSize: "1.275em"
+		}).fadeIn(1000);
+
+		console.log(conceptsWrapper);
 	}
 }
 
