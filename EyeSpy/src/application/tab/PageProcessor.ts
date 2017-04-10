@@ -117,27 +117,25 @@ export class PageProcessor
 	 */
 	private _displayImageConcepts(image: JQuery, concepts: [any]): void
 	{
-		const topConcepts     = concepts.slice(0, 5);
-		const conceptsWrapper = $("<div class=\"eyespy-image-concepts-wrapper\">Image Contents:</div>");
+		const topConcepts    = concepts.slice(0, 5);
+		const toolTip        = $("<div class=\"eyespy-image-contents-tooltip\">Image Contents:</div>");
+		const toolTipWrapper = $("<div class=\"eyespy-tooltip-target\"></div>");
 
+		// Build the tooltip contents.
 		topConcepts.forEach((concept: any) =>
 		{
-			const conceptElement = $("<div class=\"eyespy-image-concept\"><p>" + concept.name
+			const contentElement = $("<div class=\"eyespy-image-contents\"><p>" + concept.name
 				+ " " + (concept.value * 100).toFixed(2) + "%</p></div>");
 
-			conceptsWrapper.append(conceptElement);
+			toolTip.append(contentElement);
 		});
 
-		const belowImageX = image.offset().left;
-		const belowImageY = image.offset().top + image.innerHeight();
+		// Wrap the image in the tooltip wrapper and add the tooltip as a child of the wrapper.
+		image.wrap(toolTipWrapper);
 
-		$("body").append(conceptsWrapper);
-
-		// TODO: Shouldn't be defining the popup styles here :/
-		conceptsWrapper.css({
-			left: belowImageX, top: belowImageY, position: "absolute", backgroundColor: "#F4F4F4", width: image.width(),
-			textAlign: "center", fontSize: "1.275em", color: "black", zIndex: 999
-		}).hide().fadeIn(250);
+		// To get the tooltip wrapper, we have to get the parent of the element we just wrapped, because jQuery wrap()
+		// wraps a caopy of the wrapper element around the target, so toolTipWrapper here doesn't acutally exist in the DOM.
+		image.parent().append(toolTip);
 	}
 }
 

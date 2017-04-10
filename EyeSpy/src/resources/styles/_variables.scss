@@ -3,11 +3,16 @@ $eyespy-font-primary: Helvetica, sans-serif;
 $eyespy-font-secondary: Arial, sans-serif;
 
 $eyespy-font-size-xlarge: 2em;
-$eyespy-font-size-large: 1em;
-$eyespy-font-size-medium: 0.875em;
-$eyespy-font-size-small: 0.625em;
+$eyespy-font-size-large: 1.25em;
+$eyespy-font-size-medium: 1em;
+$eyespy-font-size-small: 0.875em;
+$eyespy-font-size-xsmall: 0.625em;
 
 /* Colour scheme. */
 $eyespy-colour-silk: #EAEAEA;
 $eyespy-colour-paper: #F4F4F4;
 $eyespy-colour-charcoal: #373737;
+
+/* Useful sizes for consistent layouts. */
+$eyespy-spacing: 1.25em;
+$eyespy-border-radius: 4px;

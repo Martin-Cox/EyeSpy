@@ -1,0 +1,49 @@
+﻿/* Styling for elements the extension manipulates on the page. */
+
+@import "variables";
+
+.eyespy-tooltip-target:hover .eyespy-image-contents-tooltip {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.eyespy-image-contents-tooltip {
+	background: $eyespy-colour-charcoal;
+	top: 100%;
+	display: block;
+	margin-top: 10px;
+	opacity: 0;
+	padding: $eyespy-spacing;
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	color: $eyespy-colour-paper;
+	border-radius: $eyespy-border-radius;
+	font-size: $eyespy-font-size-large;
+
+	/* Empty spacer block so that hovering over the gap inbetween the image and the tooltip keeps the tooltip in view. */
+	&:after {
+		top: -10px;
+		content: " ";
+		display: block;
+		height: 10px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+	}
+
+	/* CSS Triangle. */
+	&:before {
+		border-left: solid transparent 7.5px;
+		border-right: solid transparent 7.5px;
+		border-bottom: solid $eyespy-colour-charcoal 10px;
+		top: -10px;
+		content: " ";
+		height: 0;
+		left: 50%;
+		margin-left: -13px;
+		position: absolute;
+	}
+
+
+}

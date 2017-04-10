@@ -16,7 +16,8 @@
 	"content_scripts": [
 		{
 			"all_frames": false,
-			"js": ["build/eyespy.js"],
+			"js": [ "build/eyespy.js" ],
+			"css": [ "build/styles/EyeSpyPage.css" ],
 			"matches": ["<all_urls>"],
 			"run_at": "document_idle"
 		}

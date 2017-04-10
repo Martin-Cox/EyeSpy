@@ -45,6 +45,7 @@
     <Content Include="src\resources\styles\EyeSpyPopup.scss" />
     <Content Include="src\resources\styles\_variables.scss" />
     <Content Include="src\resources\styles\_mixins.scss" />
+    <Content Include="src\resources\styles\EyeSpyPage.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

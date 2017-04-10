@@ -1,4 +1,6 @@
-﻿@import "variables";
+﻿/* Styling for the extensions popup. */
+
+@import "variables";
 
 .eyespy-popup-content {
 	width: 500px;
@@ -25,7 +27,7 @@
 			display: flex;
 			flex-direction: column;
 			font-family: $eyespy-font-primary;
-			font-size: $eyespy-font-size-large;
+			font-size: $eyespy-font-size-xlarge;
 
 			&:hover {
 				background-color: $eyespy-colour-silk;
