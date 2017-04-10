@@ -38,7 +38,10 @@ export class PageProcessor
 	 */
 	public analysePage(): void
 	{
-		this._getPageImages();
+		this._getPageImages().each((index: number, image: Element) =>
+		{
+			// TODO: Bulk predict images in batches of up to 100.
+		});
 	}
 
 	/**
@@ -69,17 +72,9 @@ export class PageProcessor
 	/**
 	 * Gets all image elements on a page.
 	 */
-	private _getPageImages(): void
+	private _getPageImages(): JQuery
 	{
-		this._imageElements = $("body").find("img");
-
-		// Test clarifai on the first available image.
-		const firstImageSource = this._imageElements.first().attr("src");
-
-		if (firstImageSource)
-		{
-			this._predictImage(firstImageSource);
-		}
+		return $("body").find("img");
 	}
 
 	/*
@@ -141,10 +136,8 @@ export class PageProcessor
 		// TODO: Shouldn't be defining the popup styles here :/
 		conceptsWrapper.css({
 			left: belowImageX, top: belowImageY, position: "absolute", backgroundColor: "#F4F4F4", width: image.width(),
-			textAlign: "center", fontSize: "1.275em", color: "black"
-		}).fadeIn(1000);
-
-		console.log(conceptsWrapper);
+			textAlign: "center", fontSize: "1.275em", color: "black", zIndex: 999
+		}).hide().fadeIn(250);
 	}
 }
 

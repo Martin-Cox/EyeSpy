@@ -15,7 +15,7 @@ export class EyeSpyController
 	{
 		this._pageProcessor = new PageProcessor();
 
-		/** Responds to "tabLoaded" events triggered by the Background script. */
+		/** Respond to events triggered by the Background script. */
 		chrome.runtime.onMessage.addListener((message: any, sender: chrome.runtime.MessageSender, sendResponse: any) =>
 		{
 			switch (message.action)
@@ -41,8 +41,6 @@ export class EyeSpyController
 	 */
 	private _handleTabLoad(url: string): void
 	{
-		console.log("A Tab has loaded: " + url);
-
 		// Disable for now to prevent lots of API requets being made during testing.
 		// this._pageProcessor.processPage();
 	}
