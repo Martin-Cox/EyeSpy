@@ -5,6 +5,9 @@
 .eyespy-tooltip-target:hover .eyespy-image-contents-tooltip {
 	opacity: 1;
 	pointer-events: auto;
+
+
+	display: block;
 }
 
 .eyespy-image-contents-tooltip {
@@ -15,11 +18,14 @@
 	opacity: 0;
 	padding: $eyespy-spacing;
 	pointer-events: none;
-	position: absolute;
+	box-sizing: border-box;
+	position: relative;
 	width: 100%;
 	color: $eyespy-colour-paper;
 	border-radius: $eyespy-border-radius;
 	font-size: $eyespy-font-size-large;
+
+	display: none;
 
 	/* Empty spacer block so that hovering over the gap inbetween the image and the tooltip keeps the tooltip in view. */
 	&:after {

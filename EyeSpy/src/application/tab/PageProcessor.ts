@@ -134,7 +134,7 @@ export class PageProcessor
 		image.wrap(toolTipWrapper);
 
 		// To get the tooltip wrapper, we have to get the parent of the element we just wrapped, because jQuery wrap()
-		// wraps a caopy of the wrapper element around the target, so toolTipWrapper here doesn't acutally exist in the DOM.
+		// wraps a copy of the wrapper element around the target, so toolTipWrapper here doesn't acutally exist in the DOM.
 		image.parent().append(toolTip);
 	}
 }
