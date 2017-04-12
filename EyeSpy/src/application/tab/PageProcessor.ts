@@ -88,7 +88,7 @@ export class PageProcessor
 			{
 				if (image)
 				{
-					this._displayImageConcepts(image, response.outputs[0].data.concepts);
+					this._displayContentsTooltip(image, response.outputs[0].data.concepts);
 				}
 				else
 				{
@@ -111,11 +111,11 @@ export class PageProcessor
 	}
 
 	/**
-	 * Display image concepts on the page.
+	 * Display image contents as a tooltip.
 	 * @param image The JQuery image element to display the concepts for.
 	 * @param concepts The concepts to display.
 	 */
-	private _displayImageConcepts(image: JQuery, concepts: [any]): void
+	private _displayContentsTooltip(image: JQuery, concepts: [any]): void
 	{
 		const topConcepts    = concepts.slice(0, 5);
 		const toolTip        = $("<div class=\"eyespy-image-contents-tooltip\">Image Contents:</div>");
@@ -134,7 +134,7 @@ export class PageProcessor
 		image.wrap(toolTipWrapper);
 
 		// To get the tooltip wrapper, we have to get the parent of the element we just wrapped, because jQuery wrap()
-		// wraps a copy of the wrapper element around the target, so toolTipWrapper here doesn't acutally exist in the DOM.
+		// wraps a copy of the wrapper element around the target, so toolTipWrapper doesn't actually exist in the DOM.
 		image.parent().append(toolTip);
 	}
 }
