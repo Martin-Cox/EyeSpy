@@ -1,4 +1,5 @@
-﻿import { IMessage, MessageActions } from "../messages/Messages";
+﻿import { IClarifaiCredentials } from "../keys/Keys";
+import { IMessage, MessageActions } from "../messages/Messages";
 import { PageProcessor } from "../tab/PageProcessor";
 
 /**
@@ -16,7 +17,9 @@ export class EyeSpyController
 	{
 		this._pageProcessor = new PageProcessor();
 
-		/** Respond to events triggered by the Background script. */
+		this._updateClarifaiCredentials();
+
+		/** Respond to events triggered by the Background script or Popup. */
 		chrome.runtime.onMessage.addListener((message: IMessage, sender: chrome.runtime.MessageSender, sendResponse: any) =>
 		{
 			switch (message.action)
@@ -29,6 +32,9 @@ export class EyeSpyController
 					break;
 				case MessageActions.AnalyseImage:
 					this._pageProcessor.analyseImage(message.url);
+					break;
+				case MessageActions.CredentialsUpdated:
+					this._updateClarifaiCredentials();
 					break;
 				default:
 					throw new Error("Unknown message action");
@@ -44,5 +50,17 @@ export class EyeSpyController
 	{
 		// Disable for now to prevent lots of API requets being made during testing.
 		// this._pageProcessor.processPage();
+	}
+
+	/**
+	 * Fetches the Clarifai API credentials from Chrome's local storage and notifies the page processor
+	 * to update it's credentials.
+	 */
+	private _updateClarifaiCredentials(): void
+	{
+		chrome.storage.sync.get("clarifaiCredentials", (response: any) =>
+		{
+			this._pageProcessor.updateClarifaiCredentials(response.clarifaiCredentials);
+		});
 	}
 }

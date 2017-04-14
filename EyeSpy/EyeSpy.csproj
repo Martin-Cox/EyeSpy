@@ -32,7 +32,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\application\background\Background.ts" />
     <TypeScriptCompile Include="src\application\messages\Messages.ts" />
-    <TypeScriptCompile Include="src\application\Keys.ts" />
+    <TypeScriptCompile Include="src\application\keys\Keys.ts" />
     <TypeScriptCompile Include="src\application\main\Main.ts" />
     <TypeScriptCompile Include="src\application\main\EyeSpyController.ts" />
     <TypeScriptCompile Include="src\application\popup\Popup.ts" />

@@ -54,7 +54,7 @@
 
 	/* Popup panel content styling. */
 	.panel-content {
-		padding-left: 20px;
+		padding: 0 $eyespy-spacing;
 		width: 100%;
 		background-color: $eyespy-colour-silk;
 
@@ -64,6 +64,20 @@
 			font-size: $eyespy-font-size-xlarge;
 			font-family: $eyespy-font-primary;
 			color: $eyespy-colour-charcoal;
+		}
+
+		.form-control-wrapper {
+			width: 100%;
+			height: $eyespy-form-control-height;
+
+			.form-control-label {
+				width: 50%;
+			}
+
+			.form-control {
+				width: 50%;
+				float: right;
+			}
 		}
 	}
 }

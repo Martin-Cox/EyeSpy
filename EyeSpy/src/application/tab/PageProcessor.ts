@@ -1,6 +1,6 @@
 ﻿import * as $ from "jquery";
 
-import { CLIENT_ID, CLIENT_SECRET } from "../Keys";
+import { IClarifaiCredentials } from "../keys/Keys";
 
 // TODO: Get Clarifai to be webpack compatible.
 const clarifai = require("clarifai");
@@ -19,10 +19,11 @@ export class PageProcessor
 	/** The Clarifai app instance. */
 	private _clarifai: any;
 
+	/** The Clarifai API credentials for this EyeSpy extension instance. */
+	private _clarifaiCredentials: IClarifaiCredentials;
+
 	public constructor()
 	{
-		this._clarifai = new clarifai.App(CLIENT_ID, CLIENT_SECRET);
-
 		// Listen to right click mousedown events on the page and update the targetElement.
 		$("body").mousedown((event: JQueryMouseEventObject) =>
 		{
@@ -31,6 +32,16 @@ export class PageProcessor
 				this._mouseTargetElement = $(event.target);
 			}
 		});
+	}
+
+	/**
+	 * Updates the Clarifai API credentials and re-initialises the Clarifai instance.
+	 * @param credentials The new API credentials.
+	 */
+	public updateClarifaiCredentials(credentials: IClarifaiCredentials): void
+	{
+		this._clarifaiCredentials = credentials;
+		this._clarifai            = new clarifai.App(credentials.clientId, credentials.clientSecret);
 	}
 
 	/**
