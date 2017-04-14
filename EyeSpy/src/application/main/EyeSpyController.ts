@@ -1,4 +1,5 @@
-﻿import { PageProcessor } from "../tab/PageProcessor";
+﻿import { IMessage, MessageActions } from "../messages/Messages";
+import { PageProcessor } from "../tab/PageProcessor";
 
 /**
  * The EyeSpyController class. Contains logic for reacting to browser events.
@@ -16,17 +17,17 @@ export class EyeSpyController
 		this._pageProcessor = new PageProcessor();
 
 		/** Respond to events triggered by the Background script. */
-		chrome.runtime.onMessage.addListener((message: any, sender: chrome.runtime.MessageSender, sendResponse: any) =>
+		chrome.runtime.onMessage.addListener((message: IMessage, sender: chrome.runtime.MessageSender, sendResponse: any) =>
 		{
 			switch (message.action)
 			{
-				case "tabLoaded":
+				case MessageActions.TabLoad:
 					this._handleTabLoad(message.url);
 					break;
-				case "scanPage":
+				case MessageActions.ScanPage:
 					this._pageProcessor.analysePage();
 					break;
-				case "analyseImage":
+				case MessageActions.AnalyseImage:
 					this._pageProcessor.analyseImage(message.url);
 					break;
 				default:

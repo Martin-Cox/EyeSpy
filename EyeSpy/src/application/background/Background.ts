@@ -1,10 +1,12 @@
-﻿/** Listen to tab update events. When a tab has finished loading, send a message signifying that the tab has loaded. */
+﻿import { MessageActions } from "../messages/Messages";
+
+/** Listen to tab update events. When a tab has finished loading, send a message signifying that the tab has loaded. */
 chrome.tabs.onUpdated.addListener((tabId: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) =>
 {
 	if (changeInfo.status === "complete")
 	{
 		// Notify the EyeSpyController that a tab has loaded.
-		chrome.tabs.sendMessage(tabId, { action: "tabLoaded", url: tab.url });
+		chrome.tabs.sendMessage(tabId, { action: MessageActions.TabLoad, url: tab.url });
 	}
 });
 
@@ -16,7 +18,7 @@ const analyseImageHandler = (): any =>
 	return (info: chrome.contextMenus.OnClickData, tab: chrome.tabs.Tab): void =>
 	{
 		// Notify the EyeSpyController that a tab has loaded.
-		chrome.tabs.sendMessage(tab.id, { action: "analyseImage", url: info.srcUrl });
+		chrome.tabs.sendMessage(tab.id, { action: MessageActions.AnalyseImage, url: info.srcUrl });
 	};
 };
 
