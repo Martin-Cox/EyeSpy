@@ -4,7 +4,8 @@ module.exports = {
 	context: path.resolve(__dirname, "./src"),
 	entry:  {
 		eyespy: "./application/main/Main",
-		background: "./application/background/Background"
+		background: "./application/background/Background",
+		popup: "./application/popup/Popup"
 	},
 	output: {
 		filename: "[name].js",

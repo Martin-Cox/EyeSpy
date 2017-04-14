@@ -35,7 +35,7 @@
     <TypeScriptCompile Include="src\application\Keys.ts" />
     <TypeScriptCompile Include="src\application\main\Main.ts" />
     <TypeScriptCompile Include="src\application\main\EyeSpyController.ts" />
-    <TypeScriptCompile Include="src\application\popup\EyeSpyPopup.ts" />
+    <TypeScriptCompile Include="src\application\popup\Popup.ts" />
     <TypeScriptCompile Include="src\application\tab\PageProcessor.ts" />
   </ItemGroup>
   <ItemGroup>
