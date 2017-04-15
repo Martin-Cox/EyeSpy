@@ -36,6 +36,16 @@
     <TypeScriptCompile Include="src\application\main\Main.ts" />
     <TypeScriptCompile Include="src\application\main\EyeSpyController.ts" />
     <TypeScriptCompile Include="src\application\popup\Popup.ts" />
+    <TypeScriptCompile Include="src\application\rules\BlockAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\BlurAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\CaptionAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\DownloadAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\EditAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\HideAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\ReplaceWithAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\ReplaceWithSimilarAction.ts" />
+    <TypeScriptCompile Include="src\application\rules\Rule.ts" />
+    <TypeScriptCompile Include="src\application\rules\RulesetAction.ts" />
     <TypeScriptCompile Include="src\application\tab\PageProcessor.ts" />
   </ItemGroup>
   <ItemGroup>

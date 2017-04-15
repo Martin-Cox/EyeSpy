@@ -1,4 +1,6 @@
-﻿export interface IMessage {
+﻿/** Interface describing content script messages. */
+export interface IMessage
+{
 	action: MessageActions;
 	url?: string;
 }
