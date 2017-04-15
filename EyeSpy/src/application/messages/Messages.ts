@@ -4,7 +4,7 @@
 }
 
 export enum MessageActions {
-	TabLoad,
+	PageLoad,
 	ScanPage,
 	AnalyseImage,
 	CredentialsUpdated

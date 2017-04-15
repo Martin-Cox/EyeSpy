@@ -24,8 +24,8 @@ export class EyeSpyController
 		{
 			switch (message.action)
 			{
-				case MessageActions.TabLoad:
-					this._handleTabLoad(message.url);
+				case MessageActions.PageLoad:
+					this._handlePageLoad(message.url);
 					break;
 				case MessageActions.ScanPage:
 					this._pageProcessor.analysePage();
@@ -43,13 +43,12 @@ export class EyeSpyController
 	}
 
 	/**
-	 * Handles tabLoad events by beginning the page processor.
-	 * @param url The tab url.
+	 * Handles PageLoad events by beginning the page processor.
+	 * @param url The page url.
 	 */
-	private _handleTabLoad(url: string): void
+	private _handlePageLoad(url: string): void
 	{
-		// Disable for now to prevent lots of API requets being made during testing.
-		// this._pageProcessor.processPage();
+		this._pageProcessor.analysePage();
 	}
 
 	/**

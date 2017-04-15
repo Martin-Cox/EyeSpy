@@ -6,7 +6,7 @@ chrome.tabs.onUpdated.addListener((tabId: number, changeInfo: chrome.tabs.TabCha
 	if (changeInfo.status === "complete")
 	{
 		// Notify the EyeSpyController that a tab has loaded.
-		chrome.tabs.sendMessage(tabId, { action: MessageActions.TabLoad, url: tab.url });
+		chrome.tabs.sendMessage(tabId, { action: MessageActions.PageLoad, url: tab.url });
 	}
 });
 

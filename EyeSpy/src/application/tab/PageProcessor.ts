@@ -32,6 +32,9 @@ export class PageProcessor
 				this._mouseTargetElement = $(event.target);
 			}
 		});
+
+		// Build the page image elements index.
+		this._buildImagesIndex();
 	}
 
 	/**
@@ -49,7 +52,7 @@ export class PageProcessor
 	 */
 	public analysePage(): void
 	{
-		this._getPageImages().each((index: number, image: Element) =>
+		this._imageElements.each((index: number, image: Element) =>
 		{
 			// TODO: Bulk predict images in batches of up to 100.
 		});
@@ -81,11 +84,11 @@ export class PageProcessor
 	}
 
 	/**
-	 * Gets all image elements on a page.
+	 * Gets all image elements on a page and stores them in the _imageElements variable.
 	 */
-	private _getPageImages(): JQuery
+	private _buildImagesIndex(): void
 	{
-		return $("body").find("img");
+		this._imageElements = $("body").find("img");
 	}
 
 	/*
@@ -106,11 +109,15 @@ export class PageProcessor
 					// There is no image element we can use to display the concepts on, just log them to the console instead.
 					const imageConcepts: any[] = response.outputs[0].data.concepts;
 
+					console.group("Image Contents");
+
 					imageConcepts.forEach((concept: any) =>
 					{
 						console.log("Name: " + concept.name);
 						console.log("Probability: " + (concept.value * 100).toFixed(2) + "%");
 					});
+
+					console.groupEnd();
 				}
 
 			},
