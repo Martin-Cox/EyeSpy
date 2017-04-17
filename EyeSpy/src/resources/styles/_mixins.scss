@@ -1,1 +1,7 @@
-﻿
+﻿@import "variables";
+
+@mixin form-element {
+	width: 100%;
+	height: $eyespy-form-control-height;
+	padding: 3px 0;
+}

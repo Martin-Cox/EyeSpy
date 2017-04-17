@@ -9,5 +9,5 @@ export enum MessageActions {
 	PageLoad,
 	ScanPage,
 	AnalyseImage,
-	CredentialsUpdated
+	ClarifaiSettingsChanged
 }

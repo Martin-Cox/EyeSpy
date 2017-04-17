@@ -9,7 +9,7 @@ export class ReplaceWithAction implements IRulesetAction
 {
 	public executeAction(imageElement: JQuery): void
 	{
-		this._replaceImage();
+		this.replaceImage();
 	}
 
 	protected replaceImage(): void

@@ -1,7 +1,7 @@
 ﻿import * as $ from "jquery";
 
-import { IClarifaiCredentials } from "../keys/Keys";
 import { MessageActions } from "../messages/Messages";
+import { IClarifaiSettings } from "../messages/Settings";
 
 /** JavaScript to be ran on the extension's popup page. */
 
@@ -17,17 +17,17 @@ $("#scan-page-button").click(() =>
 	sendMessage(MessageActions.ScanPage);
 });
 
-/** Add the save Clarifai API credentials handler. */
-$("#save-clarifai-keys").click(() =>
+/** Add the save Clarifai API settings handler. */
+$("#save-clarifai-settings").click(() =>
 {
-	const clarifaiCredentials: IClarifaiCredentials = {
+	const clarifaiSettings: IClarifaiSettings = {
 		clientId: $("#clarifai-client-id").val(),
-		clientSecret: $("#clarifai-client-secret").val()
+		clientSecret: $("#clarifai-client-secret").val(),
+		model: parseInt($("#clarifai-model").val(), 10)
 	};
 
-	// Store the Clarifai API credentials in the local storage. This isn't really the best place to store them
-	// but will serve until a more secure solution is implemented.
-	chrome.storage.sync.set({ clarifaiCredentials }, () => sendMessage(MessageActions.CredentialsUpdated));
+	// Store the Clarifai API settings in the local storage.
+	chrome.storage.sync.set({ clarifaiSettings }, () => sendMessage(MessageActions.ClarifaiSettingsChanged));
 });
 
 $(".menu-item.home").click(() =>
@@ -88,11 +88,12 @@ function populateSettingsForm(): void
 	// TODO: A procedure for keeping form details in sync between this script and the EyeSpyController would be a much
 	// better way of handling this. The controller could pass the updated values which the form then updates on the
 	// view and vice-versa.
-	chrome.storage.sync.get("clarifaiCredentials", (response: any) =>
+	chrome.storage.sync.get("clarifaiSettings", (response: any) =>
 	{
-		const credentials: IClarifaiCredentials = response.clarifaiCredentials;
+		const clarifaiSettings: IClarifaiSettings = response.clarifaiSettings;
 
-		$("#clarifai-client-id").val(credentials.clientId);
-		$("#clarifai-client-secret").val(credentials.clientSecret);
+		$("#clarifai-client-id").val(clarifaiSettings.clientId);
+		$("#clarifai-client-secret").val(clarifaiSettings.clientSecret);
+		$("#clarifai-model").val(clarifaiSettings.model);
 	});
 }

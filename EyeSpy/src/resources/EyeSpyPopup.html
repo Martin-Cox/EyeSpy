@@ -33,20 +33,39 @@
 		</div>
 		<div class="panel-content settings hidden">
 			<h1 class="panel-content-header">Settings</h1>
-			<div class="form-control-wrapper">
-				<label class="form-control-label">
-					Clarifai Client ID:
-					<input type="text" class="form-control" id="clarifai-client-id" />
-				</label>
-			</div>
-			<div class="form-control-wrapper">
-				<label class="form-control-label">
-					Clarifai Client Secret:
-					<input type="text" class="form-control" id="clarifai-client-secret" />
-				</label>
-			</div>
-			<div class="form-control-wrapper">
-				<button class="form-button" id="save-clarifai-keys" type="button">Save Credentials</button>
+
+			<div class="form-section">
+				<h2 class="form-section-header">Clarifai Settings</h2>
+				<div class="form-control-wrapper">
+					<label class="form-control-label">
+						Clarifai Client ID:
+						<input type="text" class="form-control" id="clarifai-client-id" />
+					</label>
+				</div>
+				<div class="form-control-wrapper">
+					<label class="form-control-label">
+						Clarifai Client Secret:
+						<input type="text" class="form-control" id="clarifai-client-secret" />
+					</label>
+				</div>
+				<div class="form-control-wrapper">
+					<label class="form-control-label">
+						Clarifai Model
+						<select class="form-control" id="clarifai-model">
+							<option value="0">Apparel</option>
+							<option value="1">Celebrity</option>
+							<option value="2">Color</option>
+							<option value="3">Face</option>
+							<option value="4">Focus</option>
+							<option value="5">Food</option>
+							<option selected value="6">General</option>
+							<option value="7">NSFW</option>
+						</select>
+					</label>
+				</div>
+				<div class="form-button-wrapper">
+					<button class="form-button" id="save-clarifai-settings" type="button">Update Settings</button>
+				</div>
 			</div>
 		</div>
 	</div>

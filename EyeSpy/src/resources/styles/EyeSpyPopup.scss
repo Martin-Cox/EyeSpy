@@ -1,6 +1,7 @@
 ﻿/* Styling for the extensions popup. */
 
 @import "variables";
+@import "mixins";
 
 .eyespy-popup-content {
 	width: 500px;
@@ -67,8 +68,7 @@
 		}
 
 		.form-control-wrapper {
-			width: 100%;
-			height: $eyespy-form-control-height;
+			@include form-element;
 
 			.form-control-label {
 				width: 50%;
@@ -78,6 +78,13 @@
 				width: 50%;
 				float: right;
 			}
+		}
+
+		.form-button-wrapper {
+			@include form-element;
+
+			display: flex;
+			justify-content: center;
 		}
 	}
 }

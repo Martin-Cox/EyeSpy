@@ -32,9 +32,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\application\background\Background.ts" />
     <TypeScriptCompile Include="src\application\messages\Messages.ts" />
-    <TypeScriptCompile Include="src\application\keys\Keys.ts" />
     <TypeScriptCompile Include="src\application\main\Main.ts" />
     <TypeScriptCompile Include="src\application\main\EyeSpyController.ts" />
+    <TypeScriptCompile Include="src\application\messages\Settings.ts" />
     <TypeScriptCompile Include="src\application\popup\Popup.ts" />
     <TypeScriptCompile Include="src\application\rules\BlockAction.ts" />
     <TypeScriptCompile Include="src\application\rules\BlurAction.ts" />

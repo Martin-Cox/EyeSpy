@@ -1,6 +1,6 @@
 ﻿import * as $ from "jquery";
 
-import { IClarifaiCredentials } from "../keys/Keys";
+import { ClarifaiModel, IClarifaiSettings } from "../messages/Settings";
 
 // TODO: Get Clarifai to be webpack compatible.
 const clarifai = require("clarifai");
@@ -19,8 +19,11 @@ export class PageProcessor
 	/** The Clarifai app instance. */
 	private _clarifai: any;
 
-	/** The Clarifai API credentials for this EyeSpy extension instance. */
-	private _clarifaiCredentials: IClarifaiCredentials;
+	/** The Clarifai API settings for this EyeSpy extension instance. */
+	private _clarifaiSettings: IClarifaiSettings;
+
+	/** The id of the Clarifai model chosen by the user. */
+	private _clarifaiModelId: string;
 
 	public constructor()
 	{
@@ -38,13 +41,14 @@ export class PageProcessor
 	}
 
 	/**
-	 * Updates the Clarifai API credentials and re-initialises the Clarifai instance.
-	 * @param credentials The new API credentials.
+	 * Updates the Clarifai API settings and re-initialises the Clarifai instance.
+	 * @param settings The new API settings.
 	 */
-	public updateClarifaiCredentials(credentials: IClarifaiCredentials): void
+	public updateClarifaiSettings(settings: IClarifaiSettings): void
 	{
-		this._clarifaiCredentials = credentials;
-		this._clarifai            = new clarifai.App(credentials.clientId, credentials.clientSecret);
+		this._clarifaiSettings = settings;
+		this._clarifaiModelId  = this.updateClarifaiModelId();
+		this._clarifai         = new clarifai.App(settings.clientId, settings.clientSecret);
 	}
 
 	/**
@@ -97,7 +101,7 @@ export class PageProcessor
 	 */
 	private _predictImage(url: string, image?: JQuery): void
 	{
-		this._clarifai.models.predict(clarifai.GENERAL_MODEL, url).then(
+		this._clarifai.models.predict(this._clarifaiModelId, url).then(
 			(response: any) =>
 			{
 				if (image)
@@ -154,6 +158,35 @@ export class PageProcessor
 		// To get the tooltip wrapper, we have to get the parent of the element we just wrapped, because jQuery wrap()
 		// wraps a copy of the wrapper element around the target, so toolTipWrapper doesn't actually exist in the DOM.
 		image.parent().append(toolTip);
+	}
+
+	/**
+	 * Maps the IClarifaiSettings model value to the Clarifai models id.
+	 * @returns The string containing the Clarifai models id.
+	 */
+	private updateClarifaiModelId(): string
+	{
+		const cunt = this._clarifaiSettings.model as ClarifaiModel;
+
+		switch (this._clarifaiSettings.model as ClarifaiModel)
+		{
+			case ClarifaiModel.Apparel:
+				return "e0be3b9d6a454f0493ac3a30784001ff";
+			case ClarifaiModel.Celebrity:
+				return "e466caa0619f444ab97497640cefc4dc";
+			case ClarifaiModel.Color:
+				return "eeed0b6733a644cea07cf4c60f87ebb7";
+			case ClarifaiModel.Face:
+				return "a403429f2ddf4b49b307e318f00e528b";
+			case ClarifaiModel.Focus:
+				return "c2cf7cecd8a6427da375b9f35fcd2381";
+			case ClarifaiModel.Food:
+				return "bd367be194cf45149e75f01d59f77ba7";
+			case ClarifaiModel.General:
+				return "aaa03c23b3724a16a56b629203edc62c";
+			case ClarifaiModel.NSFW:
+				return "e9576d86d2004ed1a38ba0cf39ecb4b1";
+		}
 	}
 }
 
