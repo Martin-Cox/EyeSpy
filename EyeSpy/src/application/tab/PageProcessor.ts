@@ -47,7 +47,7 @@ export class PageProcessor
 	public updateClarifaiSettings(settings: IClarifaiSettings): void
 	{
 		this._clarifaiSettings = settings;
-		this._clarifaiModelId  = this.updateClarifaiModelId();
+		this._clarifaiModelId  = this._updateClarifaiModelId();
 		this._clarifai         = new clarifai.App(settings.clientId, settings.clientSecret);
 	}
 
@@ -164,7 +164,7 @@ export class PageProcessor
 	 * Maps the IClarifaiSettings model value to the Clarifai models id.
 	 * @returns The string containing the Clarifai models id.
 	 */
-	private updateClarifaiModelId(): string
+	private _updateClarifaiModelId(): string
 	{
 		const cunt = this._clarifaiSettings.model as ClarifaiModel;
 
