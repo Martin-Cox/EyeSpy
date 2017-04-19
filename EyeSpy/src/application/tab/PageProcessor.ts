@@ -166,8 +166,6 @@ export class PageProcessor
 	 */
 	private _updateClarifaiModelId(): string
 	{
-		const cunt = this._clarifaiSettings.model as ClarifaiModel;
-
 		switch (this._clarifaiSettings.model as ClarifaiModel)
 		{
 			case ClarifaiModel.Apparel:
