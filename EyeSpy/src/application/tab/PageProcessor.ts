@@ -46,9 +46,16 @@ export class PageProcessor
 	 */
 	public updateClarifaiSettings(settings: IClarifaiSettings): void
 	{
-		this._clarifaiSettings = settings;
-		this._clarifaiModelId  = this._updateClarifaiModelId();
-		this._clarifai         = new clarifai.App(settings.clientId, settings.clientSecret);
+		if (settings)
+		{
+			this._clarifaiSettings = settings;
+			this._clarifaiModelId  = this._updateClarifaiModelId();
+			this._clarifai         = new clarifai.App(settings.clientId, settings.clientSecret);
+		}
+		else
+		{
+			console.error("The Clarifai settings are invalid.");
+		}
 	}
 
 	/**
@@ -193,3 +200,5 @@ export class PageProcessor
 
 // TODO: Need to build a dictionary of _imageElements and their Clarifai results to prevent multiple requests being mad
 // for the same image
+
+// TODO: Add decorator for any method that attemps to use clarifai that validates the clarifai settings.
