@@ -1,5 +1,5 @@
 ﻿import { IMessage, MessageActions } from "../messages/Messages";
-import { PageProcessor } from "../tab/PageProcessor";
+import { PageProcessor } from "../processor/PageProcessor";
 
 /**
  * The EyeSpyController class. Contains logic for reacting to browser events.

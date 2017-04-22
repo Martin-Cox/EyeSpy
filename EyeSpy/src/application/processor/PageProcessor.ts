@@ -198,7 +198,7 @@ export class PageProcessor
 // TODO: Instead of passing in an image element to _predictImage and letting that decide if it is suitable to
 // _displayImageConcepts, _predictImage should return a promise so that whatever called it can decide how to react.
 
-// TODO: Need to build a dictionary of _imageElements and their Clarifai results to prevent multiple requests being mad
+// TODO: Need to build a dictionary of _imageElements and their Clarifai results to prevent multiple requests being made
 // for the same image
 
 // TODO: Add decorator for any method that attemps to use clarifai that validates the clarifai settings.
