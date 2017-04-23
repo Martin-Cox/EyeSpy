@@ -33,7 +33,7 @@ export class Results
 		else
 		{
 			// We don't have the results for this image yet. Create one and set the results for the model.
-			const newResult = new Result(imageHash);
+			const newResult = new Result(image, imageHash);
 
 			newResult.setResultForModel(clarifaiModel, clarifaiResults);
 

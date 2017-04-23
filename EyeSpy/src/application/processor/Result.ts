@@ -1,4 +1,6 @@
-﻿import { ClarifaiModel } from "../messages/Settings";
+﻿import * as $ from "jquery";
+
+import { ClarifaiModel } from "../messages/Settings";
 
 /** Interface for a model/result dictionary. */
 interface IModelResult
@@ -9,6 +11,9 @@ interface IModelResult
 /** Stores Clarifai results for a given image. */
 export class Result
 {
+	/** The image element. */
+	private _image: JQuery;
+
 	/** The unique hash for the image. */
 	private _imageHash: string;
 
@@ -19,8 +24,9 @@ export class Result
 	 * Creates a new instance of the Result class.
 	 * @param imageHash The hash of the image to store results for.
 	 */
-	public constructor(imageHash: string)
+	public constructor(image: JQuery, imageHash: string)
 	{
+		this._image     = image;
 		this._imageHash = imageHash;
 	}
 
