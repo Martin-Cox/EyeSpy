@@ -68,7 +68,7 @@ function sendMessage(action: MessageActions, url?: string): void
 function activateMenuItem(menuSectionName: string): void
 {
 	$(".menu-item" + menuSectionName).addClass("active");
-	$(".panel-content" + menuSectionName).removeClass("hidden");
+	$(".panel-content" + menuSectionName).removeClass("eyespy-hidden");
 }
 
 /**
@@ -77,7 +77,7 @@ function activateMenuItem(menuSectionName: string): void
 function resetMenuState(): void
 {
 	$(".menu-item").removeClass("active");
-	$(".panel-content").addClass("hidden");
+	$(".panel-content").addClass("eyespy-hidden");
 }
 
 /**

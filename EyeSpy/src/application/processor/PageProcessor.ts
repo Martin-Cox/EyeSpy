@@ -1,6 +1,7 @@
 ﻿import * as $ from "jquery";
 
 import { ClarifaiModel, IClarifaiSettings } from "../messages/Settings";
+import { Results } from "../processor/Results";
 
 // TODO: Get Clarifai to be webpack compatible.
 const clarifai = require("clarifai");
@@ -24,6 +25,9 @@ export class PageProcessor
 
 	/** The id of the Clarifai model chosen by the user. */
 	private _clarifaiModelId: string;
+
+	/** The results for this page. */
+	private _results: Results = new Results();
 
 	public constructor()
 	{
@@ -80,6 +84,8 @@ export class PageProcessor
 		// Get the url of the image.
 		url = (typeof (image) === "string") ? image : image.attr("src");
 
+		// TODO: Check if this._results already has a result for this image/model combination
+
 		// TODO: If we pass in image as a JQuery element we should pass that through here instead of the _mouseTargetElement
 		this._predictImage(url, this._mouseTargetElement);
 	}
@@ -114,6 +120,8 @@ export class PageProcessor
 				if (image)
 				{
 					this._displayContentsTooltip(image, response.outputs[0].data.concepts);
+
+					this._results.createOrUpdate(image, this._clarifaiSettings.model, response);
 				}
 				else
 				{
@@ -146,9 +154,8 @@ export class PageProcessor
 	 */
 	private _displayContentsTooltip(image: JQuery, concepts: [any]): void
 	{
-		const topConcepts    = concepts.slice(0, 5);
-		const toolTip        = $("<div class=\"eyespy-image-contents-tooltip\">Image Contents:</div>");
-		const toolTipWrapper = $("<div class=\"eyespy-tooltip-target\"></div>");
+		const topConcepts = concepts.slice(0, 5);
+		const toolTip     = $("<div class=\"eyespy-image-contents-tooltip\">Image Contents:</div>");
 
 		// Build the tooltip contents.
 		topConcepts.forEach((concept: any) =>
@@ -159,12 +166,22 @@ export class PageProcessor
 			toolTip.append(contentElement);
 		});
 
-		// Wrap the image in the tooltip wrapper and add the tooltip as a child of the wrapper.
-		image.wrap(toolTipWrapper);
+		$("body").append(toolTip);
 
-		// To get the tooltip wrapper, we have to get the parent of the element we just wrapped, because jQuery wrap()
-		// wraps a copy of the wrapper element around the target, so toolTipWrapper doesn't actually exist in the DOM.
-		image.parent().append(toolTip);
+		image.hover((event: JQueryEventObject) =>
+		{
+			if (event.type === "mouseleave")
+			{
+				toolTip.toggleClass("eyespy-hidden", true);
+				return;
+			}
+
+			toolTip.outerWidth(image.width());
+			toolTip.css("left", image.offset().left);
+			toolTip.css("top", image.offset().top + image.height());
+
+			toolTip.toggleClass("eyespy-hidden", false);
+		});
 	}
 
 	/**

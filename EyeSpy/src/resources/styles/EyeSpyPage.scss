@@ -1,14 +1,7 @@
 ﻿/* Styling for elements the extension manipulates on the page. */
 
 @import "variables";
-
-.eyespy-tooltip-target:hover .eyespy-image-contents-tooltip {
-	opacity: 1;
-	pointer-events: auto;
-
-
-	display: block;
-}
+@import "mixins";
 
 .eyespy-image-contents-tooltip {
 	background: $eyespy-colour-charcoal;
@@ -19,24 +12,14 @@
 	padding: $eyespy-spacing;
 	pointer-events: none;
 	box-sizing: border-box;
-	position: relative;
+	position: absolute;
 	width: 100%;
 	color: $eyespy-colour-paper;
 	border-radius: $eyespy-border-radius;
-	font-size: $eyespy-font-size-large;
-
-	display: none;
-
-	/* Empty spacer block so that hovering over the gap inbetween the image and the tooltip keeps the tooltip in view. */
-	&:after {
-		top: -10px;
-		content: " ";
-		display: block;
-		height: 10px;
-		left: 0;
-		position: absolute;
-		width: 100%;
-	}
+	font-size: $eyespy-font-size-small;
+	z-index: 9999;
+	opacity: 1;
+	display: block;
 
 	/* CSS Triangle. */
 	&:before {
@@ -50,6 +33,9 @@
 		margin-left: -13px;
 		position: absolute;
 	}
+}
 
-
+/* Hides an element. */
+.eyespy-hidden {
+	display: none;
 }

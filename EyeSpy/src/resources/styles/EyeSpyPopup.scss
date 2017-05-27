@@ -28,7 +28,7 @@
 			display: flex;
 			flex-direction: column;
 			font-family: $eyespy-font-primary;
-			font-size: $eyespy-font-size-large;
+			font-size: $eyespy-font-size-medium
 
 			&:hover {
 				background-color: $eyespy-colour-silk;
@@ -62,7 +62,7 @@
 		.panel-content-header {
 			width: 100%;
 			text-align: center;
-			font-size: $eyespy-font-size-xlarge;
+			font-size: $eyespy-font-size-large;
 			font-family: $eyespy-font-primary;
 			color: $eyespy-colour-charcoal;
 		}
@@ -90,6 +90,6 @@
 }
 
 /* Hides an element. */
-.hidden {
+.eyespy-hidden {
 	display: none;
 }
