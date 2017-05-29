@@ -9,5 +9,6 @@ export enum MessageActions {
 	PageLoad,
 	ScanPage,
 	AnalyseImage,
-	ClarifaiSettingsChanged
+	ClarifaiSettingsChanged,
+	Download
 }

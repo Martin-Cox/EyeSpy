@@ -3,6 +3,8 @@
 import { ClarifaiModel, IClarifaiSettings } from "../messages/Settings";
 import { Results } from "../processor/Results";
 
+import {DownloadAction} from "../rules/DownloadAction";
+
 // TODO: Get Clarifai to be webpack compatible.
 const clarifai = require("clarifai");
 

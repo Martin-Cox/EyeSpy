@@ -28,6 +28,7 @@
 	"permissions": [
 		"activeTab",
 		"contextMenus",
+		"downloads",
 		"storage",
 		"tabs"
 	]
