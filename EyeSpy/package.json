@@ -3,25 +3,25 @@
   "name": "EyeSpy",
   "private": true,
   "devDependencies": {
-    "@types/node": "^7.0.0",
+    "@types/node": "^8.5.7",
     "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
+    "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.0",
     "node-sass": "^4.5.2",
     "source-map-loader": "^0.2.1",
     "tslint": "^5.0.0",
-    "typescript": "^2.2.2",
-    "webpack": "^2.3.2"
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
   },
   "dependencies": {
-    "@types/chrome": "^0.0.44",
-    "@types/jquery": "^2.0.41",
-    "clarifai": "^2.1.5",
+    "@types/chrome": "^0.0.58",
+    "@types/jquery": "^2.0.48",
+    "clarifai": "^2.5.0",
     "jquery": "^3.1.1"
   },
   "scripts": {
     "lint": "tslint -c tslint.json src/**/*.ts",
-    "test": "npm run lint",
+    "test": "npm run build && npm run lint",
     "build": ".\\node_modules\\.bin\\webpack",
     "build:watch": ".\\node_modules\\.bin\\webpack --watch",
     "build:css": ".\\node_modules\\.bin\\node-sass .\\src\\resources\\styles -o .\\build\\styles",

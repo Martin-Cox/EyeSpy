@@ -2,7 +2,7 @@
 
 module.exports = {
 	context: path.resolve(__dirname, "./src"),
-	entry:  {
+	entry: {
 		eyespy: "./application/main/Main",
 		background: "./application/background/Background",
 		popup: "./application/popup/Popup"
