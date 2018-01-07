@@ -1,4 +1,5 @@
 ﻿import * as $ from "jquery";
+import * as md5 from "md5";
 
 import { ClarifaiModel } from "../messages/Settings";
 import { Result } from "../processor/Result";
@@ -69,6 +70,6 @@ export class Results
 	 */
 	private _generateImageHash(image: JQuery): string
 	{
-		return "";
+		return md5(image.attr("src"));
 	}
 }
