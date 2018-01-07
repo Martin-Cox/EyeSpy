@@ -18,7 +18,7 @@ export class Result
 	private _imageHash: string;
 
 	/** The dictionary for storing a Clarifai Model and its results. */
-	private _modelResults: IModelResult[];
+	private _modelResults: IModelResult[] = [];
 
 	/**
 	 * Creates a new instance of the Result class.

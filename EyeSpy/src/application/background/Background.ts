@@ -48,7 +48,7 @@ const analyseImageHandler = (): any =>
 {
 	return (info: chrome.contextMenus.OnClickData, tab: chrome.tabs.Tab): void =>
 	{
-		// Notify the EyeSpyController that a tab has loaded.
+		// Notify the EyeSpyController that an image should be analysed.
 		chrome.tabs.sendMessage(tab.id, { action: MessageActions.AnalyseImage, url: info.srcUrl });
 	};
 };

@@ -76,20 +76,26 @@ export class PageProcessor
 	}
 
 	/**
-	 * Analyses a single image.
-	 * @param image The image source or JQuery element to analyse.
+	 * Analyses a single image. If the image has been previously analysed, then it returns the cached results.
+	 * @param target The image URL or JQuery element to analyse.
 	 */
-	public analyseImage(image: string | JQuery): void
+	public analyseImage(target: string | JQuery): void
 	{
 		let url: string;
+		let image: JQuery;
 
 		// Get the url of the image.
-		url = (typeof (image) === "string") ? image : image.attr("src");
+		url = (typeof (target) === "string") ? target : target.attr("src");
 
-		// TODO: Check if this._results already has a result for this image/model combination
+		// Get the actual image JQuery element. If it was passed through then we can use that, otherwise it will
+		// be the current mouse target.
+		image = (typeof (target) !== "string") ? target : this._mouseTargetElement;
 
-		// TODO: If we pass in image as a JQuery element we should pass that through here instead of the _mouseTargetElement
-		this._predictImage(url, this._mouseTargetElement);
+		// If we haven't already got results for the given image/model combination, then get them now.
+		if (!this._results.getResult(image, this._clarifaiSettings.model))
+		{
+			this._predictImage(url, this._mouseTargetElement);
+		}
 	}
 
 	/**

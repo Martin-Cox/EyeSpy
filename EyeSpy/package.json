@@ -21,7 +21,7 @@
   },
   "scripts": {
     "lint": "tslint -c tslint.json src/**/*.ts",
-    "test": "npm run build && npm run lint",
+    "test": "npm install --dev && npm run build && npm run lint",
     "build": ".\\node_modules\\.bin\\webpack",
     "build:watch": ".\\node_modules\\.bin\\webpack --watch",
     "build:css": ".\\node_modules\\.bin\\node-sass .\\src\\resources\\styles -o .\\build\\styles",

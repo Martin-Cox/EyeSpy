@@ -6,7 +6,7 @@ import { PageProcessor } from "../processor/PageProcessor";
  */
 export class EyeSpyController
 {
-	 /** The page processor for this tab. */
+	/** The page processor for this tab. */
 	private _pageProcessor: PageProcessor;
 
 	/**
