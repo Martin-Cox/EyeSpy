@@ -35,7 +35,7 @@ export class Ruleset
 		// to true or not.
 		const rulesEvaluateTrue = this._rules.every((rule: Rule) =>
 		{
-			return rule.evaluateRule(imageContents) === true;
+			return rule.evaluateRule(imageContents);
 		});
 
 		if (rulesEvaluateTrue)

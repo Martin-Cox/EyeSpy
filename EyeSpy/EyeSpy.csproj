@@ -36,7 +36,6 @@
     <TypeScriptCompile Include="src\application\main\EyeSpyController.ts" />
     <TypeScriptCompile Include="src\application\messages\Settings.ts" />
     <TypeScriptCompile Include="src\application\popup\Popup.ts" />
-    <TypeScriptCompile Include="src\application\processor\Result.ts" />
     <TypeScriptCompile Include="src\application\processor\Results.ts" />
     <TypeScriptCompile Include="src\application\rules\BlockAction.ts" />
     <TypeScriptCompile Include="src\application\rules\BlurAction.ts" />

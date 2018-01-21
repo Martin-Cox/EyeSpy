@@ -2,14 +2,16 @@
 import * as md5 from "md5";
 
 import { ClarifaiModel } from "../messages/Settings";
-import { Result } from "../processor/Result";
+
+/** A single Clarifai model and result pair. */
+interface StorageModelResult { [clarifaiModel: number]: string };
+
+/** A collection of Clarifai model results keyed on the image hash. */
+interface StorageResult { [imageHash: string]: string }
 
 /** Stores Clarifai results for a given image. */
 export class Results
 {
-	/** The array of individual image results. */
-	private _results: Result[] = [];
-
 	/**
 	 * Creates or updates the results for a given image and Clarifai model.
 	 * @param image The image to create or update results for.
@@ -18,49 +20,57 @@ export class Results
 	 */
 	public createOrUpdate(image: JQuery, clarifaiModel: ClarifaiModel, clarifaiResults: any): void
 	{
-		const imageHash      = this._generateImageHash(image);
-		const existingResult = this._getResultByImageHash(imageHash);
+		//TODO: We should transform the clarifai results into a nicely typed, better formed, and substantially smaller object before this point.
 
-		if (existingResult)
+		const imageHash = this._generateImageHash(image);
+
+		chrome.storage.local.get(imageHash, (items: StorageResult) =>
 		{
-			// We do have already have the result stored. Set the results for the model.
-			existingResult.setResultForModel(clarifaiModel, clarifaiResults);
-		}
-		else
-		{
-			// We don't have the results for this image yet. Create one and set the results for the model.
-			const newResult = new Result(image, imageHash);
+			let storedModelResult: StorageModelResult = {};
+			let storedResult: StorageResult           = {};
 
-			newResult.setResultForModel(clarifaiModel, clarifaiResults);
+			// If we have previously stored some data for this image, get it now.
+			if (Object.keys(items).length !== 0)
+			{
+				storedModelResult = JSON.parse(items[imageHash]);
+			}
 
-			this._results.push(newResult);
-		}
+			// Create the model/result pair and put it into the results collection.
+			storedModelResult[clarifaiModel] = JSON.stringify(clarifaiResults);
+
+			// Create the results collection keyed on the image hash.
+			storedResult[imageHash] = JSON.stringify(storedModelResult);
+
+			// Store the results collection.
+			chrome.storage.local.set(storedResult);
+		});
 	}
 
 	/**
 	 * Gets the stored Result for a given image and Clarifai model, or undefined if it doesn't exist.
 	 * @param image The image to find results for.
 	 * @param clarifaiModel The Clarifai model to find results for.
+	 * @returns
 	 */
-	public getResult(image: JQuery, clarifaiModel: ClarifaiModel): Result
+	public getResult(image: JQuery, clarifaiModel: ClarifaiModel): void
 	{
-		const imageHash      = this._generateImageHash(image);
-		const existingResult = this._getResultByImageHash(imageHash);
+		const imageHash = this._generateImageHash(image);
 
-		return existingResult && existingResult.getResultForModel(clarifaiModel) ? existingResult : undefined;
-	}
-
-	/**
-	 * Gets the stared Result for a given image hash, or undefined if none exists.
-	 * @param imageHash The image hash to search the results for.
-	 */
-	private _getResultByImageHash(imageHash: string): Result
-	{
-		// See if we already have the images results.
-		return this._results.filter((result: Result): boolean =>
+		//TODO Need to return stuff from the callback
+		chrome.storage.local.get(imageHash, (items: StorageResult) =>
 		{
-			return result.imageHash === imageHash;
-		})[0];
+			// If we have previously stored some data for this image, get it now.
+			if (Object.keys(items).length !== 0)
+			{
+				// Return the results for the clarifai model, or undefined if we haven't got any results for the given model.
+				return JSON.parse(JSON.parse(items[imageHash])[clarifaiModel]) || undefined;
+			}
+
+			// Nothing stored for this image.
+			return undefined;
+		});
+
+		return undefined;
 	}
 
 	/**
